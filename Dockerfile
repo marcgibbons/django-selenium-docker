@@ -8,4 +8,4 @@ ADD . /code
 
 VOLUME /code
 
-CMD ["python", "manage.py", "runserver", "[::]:8000"]
+CMD ["python", "manage.py", "test", "--noinput"]

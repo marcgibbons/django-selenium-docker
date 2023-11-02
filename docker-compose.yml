@@ -1,15 +1,16 @@
-version: '3'
+version: "3"
 services:
   django:
     build: .
     volumes:
-      - ".:/code"
+      - ".:/home/django/project"
     links:
       - selenium
     ports:
-      - "8000:8000"
+      - 8000:8000
   selenium:
-    image: selenium/standalone-chrome-debug:3.7.1
+    environment:
+      - VNC_NO_PASSWORD=1
+    image: selenium/standalone-chrome:117.0
     ports:
-      - 4444:4444
-      - 5900:5900
+      - 7900:7900

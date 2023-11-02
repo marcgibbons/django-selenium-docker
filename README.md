@@ -1,22 +1,35 @@
 # Example: Django Selenium Tests with Docker
 
-
 ## Requirements
-- Docker
-- Docker-compose
-- VNC Viewer (optional for debugging)
+
+- Docker & Docker compose
 
 ## Installation
-`$ docker-compose build`
 
+```bash
+docker compose build
+```
 
-## Running the tests
-1. Start the selenium container:
+## Start Selenium
 
-   `$ docker-compose start selenium`
+```bash
+docker compose up -d selenium
+```
 
-2. Open VNC Viewer and connect to `localhost:5900`. Password is `secret`
+## Connect to browser using noVNC
 
-3. Run the tests
+On your host, open http://localhost:7900 and click "Connect".
 
-    `$ docker-compose run django`
+## Run tests
+
+```
+docker compose run --rm --use-aliases django pytest
+```
+
+You can interact with the browser using breakpoints.
+
+Example: drop into pdb at the beginning of each test with `--trace`.
+
+```
+docker compose run --rm --use-aliases django pytest --trace
+```

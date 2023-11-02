@@ -1,0 +1,18 @@
+[tool.pytest.ini_options]
+addopts = [
+    "--ds=project.settings",
+    "--liveserver",
+    "django"  # The name of the container running Django.
+]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+strict = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.django-stubs]
+django_settings_module = "project.settings"

@@ -1,3 +1,6 @@
-Django==1.11.7
-selenium==3.7.0
-ipdb==0.10.3
+Django==4.2.7
+django-stubs==4.2.6
+mypy==1.6.1
+pytest-django==4.6.0
+pytest==7.4.3
+selenium==4.15.0

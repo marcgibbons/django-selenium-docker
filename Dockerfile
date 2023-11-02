@@ -1,11 +1,12 @@
-FROM python:3.6.2
+FROM python:3.12
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /code
-ADD requirements.txt /code/
-RUN pip install -r requirements.txt
-ADD . /code
+RUN adduser --disabled-password --gecos '' django
+ENV PATH=${PATH}:/home/django/.local/bin
+USER django
+WORKDIR /home/django/project
 
-VOLUME /code
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "manage.py", "test", "--noinput"]
+CMD ["./manage.py", "runserver", "[::]:8000"]
